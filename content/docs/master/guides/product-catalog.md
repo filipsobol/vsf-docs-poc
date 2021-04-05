@@ -77,8 +77,7 @@ Faceting is the way of searching and classifying records, allowing users to brow
 
 Each facet is the unit that refines the results over multiple dimensions at a time. Considering the clothing shop, we can distinguish multiple dimensions such as brand, size, color and so on. The particular value of that dimension is a facet, for example `color: red`, `size: xl etc`.
 
-![faceting sechema](./../images/faceting.jpg)
-
+<doc-img src="faceting.jpg" title="Faceting Schema"></doc-img>
 
 You can fetch all the data needed for a Product Details Page such as products, sorting options, filters and pagination with a single call of a`search` method. The search result will be saved in `result` object.
 
