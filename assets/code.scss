@@ -1,0 +1,47 @@
+code,
+pre,
+code[class*="language-"],
+pre[class*="language-"] {
+  font-family: 'JetBrains Mono', monospace;
+  
+  @apply text-sm;
+  @apply rounded-lg;
+  
+  background-color: rgba(0, 0, 0, .06);
+}
+
+.prose {
+  code {
+    @apply inline-block;
+    @apply m-0;
+    @apply py-[2px];
+    @apply px-2;
+    @apply rounded-lg;
+    @apply font-light;
+  
+    &::before,
+    &::after {
+      content: "";
+    }
+  }
+}
+
+.nuxt-content-highlight {
+  @apply relative;
+  @apply my-6;
+
+  .filename {
+    font-family: 'JetBrains Mono', monospace;
+
+    @apply absolute;
+    @apply top-0;
+    @apply right-0;
+    @apply pt-2;
+    @apply pr-2;
+    @apply text-sm;
+
+    & + pre > code {
+      @apply pt-2;
+    }
+  }
+}

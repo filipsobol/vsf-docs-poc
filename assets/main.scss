@@ -1,0 +1,11 @@
+@import "./fonts.scss";
+@import "./prose.scss";
+@import "./code.scss";
+
+html {
+  @apply text-gray-700;
+
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  overflow-y:scroll;
+}
