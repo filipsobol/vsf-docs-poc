@@ -6,7 +6,7 @@ title: Introduction
 
 _Vue Storefront_ is a ___platform-agnostic e-commerce PWA frontend framework___ that can work with any e-commerce backend API. Additionally, thanks to _low coupling and high cohesion_, it can connect to other services, giving you the freedom to work with the technologies you know and love, be it CMS, ERP, PIM, or anything else.
 
-<picture src="diagram-general.png" alt="Vue Storefront architecture overview"></picture>
+<doc-img src="diagram-general.png" alt="Vue Storefront architecture overview"></doc-img>
 
 That's a mouthful, so let's break it down:
  - __platform-agnostic__ - we made it possible to work with any platform and service you already use, as long as it has an API like REST or GraphQL.

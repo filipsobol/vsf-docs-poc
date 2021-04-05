@@ -17,5 +17,6 @@ export default {
 .wrapper {
   @apply flex;
   @apply w-full;
+  @apply justify-center;
 }
 </style>
