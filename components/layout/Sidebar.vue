@@ -42,10 +42,10 @@
           <h5>Getting started</h5>
 
           <ul class="nested">
-            <Li><NuxtLink to="/docs/master/index">Introduction</NuxtLink></Li>
-            <Li><NuxtLink to="/">Installation</NuxtLink></Li>
-            <Li><NuxtLink to="/docs/master/key-concepts">Key concepts</NuxtLink></Li>
-            <Li><NuxtLink to="/">Enterprise</NuxtLink></Li>
+            <Li><NuxtLink to="/docs/master/getting-started/index">Introduction</NuxtLink></Li>
+            <Li><NuxtLink to="/docs/master/getting-started/installation">Installation</NuxtLink></Li>
+            <Li><NuxtLink to="/docs/master/getting-started/key-concepts">Key concepts</NuxtLink></Li>
+            <Li><NuxtLink to="/docs/master/getting-started/enterprise">Enterprise</NuxtLink></Li>
           </ul>
         </li>
 
@@ -53,14 +53,14 @@
           <h5>Guides</h5>
 
           <ul class="nested">
-            <li><NuxtLink to="/">Theme</NuxtLink></li>
-            <li><NuxtLink to="/">Configuration</NuxtLink></li>
-            <li><NuxtLink to="/">Composables</NuxtLink></li>
-            <li><NuxtLink to="/">Product Catalog</NuxtLink></li>
-            <li><NuxtLink to="/">Authentication</NuxtLink></li>
-            <li><NuxtLink to="/">User profile</NuxtLink></li>
-            <li><NuxtLink to="/">Cart and Wishlist</NuxtLink></li>
-            <li><NuxtLink to="/">Checkout</NuxtLink></li>
+            <li><NuxtLink to="/docs/master/guides/theme">Theme</NuxtLink></li>
+            <li><NuxtLink to="/docs/master/guides/configuration">Configuration</NuxtLink></li>
+            <li><NuxtLink to="/docs/master/guides/composables">Composables</NuxtLink></li>
+            <li><NuxtLink to="/docs/master/guides/product-catalog">Product Catalog</NuxtLink></li>
+            <li><NuxtLink to="/docs/master/guides/authentication">Authentication</NuxtLink></li>
+            <li><NuxtLink to="/docs/master/guides/user-profile">User profile</NuxtLink></li>
+            <li><NuxtLink to="/docs/master/guides/cart-and-wishlist">Cart and Wishlist</NuxtLink></li>
+            <li><NuxtLink to="/docs/master/guides/checkout">Checkout</NuxtLink></li>
           </ul>
         </li>
 
@@ -68,14 +68,14 @@
           <h5>Advanced</h5>
 
           <ul class="nested">
-            <li><NuxtLink to="/">Architecture</NuxtLink></li>
-            <li><NuxtLink to="/">Application Context</NuxtLink></li>
-            <li><NuxtLink to="/">Calling Platform API</NuxtLink></li>
-            <li><NuxtLink to="/">Server Middleware</NuxtLink></li>
-            <li><NuxtLink to="/">Interenationalization</NuxtLink></li>
-            <li><NuxtLink to="/">Performance</NuxtLink></li>
-            <li><NuxtLink to="/">SSR Cache</NuxtLink></li>
-            <li><NuxtLink to="/">Logging</NuxtLink></li>
+            <li><NuxtLink to="/docs/master/advanced/architecture">Architecture</NuxtLink></li>
+            <li><NuxtLink to="/docs/master/advanced/context">Application Context</NuxtLink></li>
+            <li><NuxtLink to="/docs/master/advanced/calling-platform-api">Calling Platform API</NuxtLink></li>
+            <li><NuxtLink to="/docs/master/advanced/server-middleware">Server Middleware</NuxtLink></li>
+            <li><NuxtLink to="/docs/master/advanced/internationalization">Internationalization</NuxtLink></li>
+            <li><NuxtLink to="/docs/master/advanced/performance">Performance</NuxtLink></li>
+            <li><NuxtLink to="/docs/master/advanced/ssr-cache">SSR Cache</NuxtLink></li>
+            <li><NuxtLink to="/docs/master/advanced/logging">Logging</NuxtLink></li>
           </ul>
         </li>
       </ul>
@@ -153,9 +153,17 @@ export default {
     @apply rounded;
     @apply text-gray-500;
 
+    &:hover {
+      @apply text-gray-900;
+    }
+
     &.nuxt-link-exact-active {
       @apply bg-green-50;
       @apply text-green-600;
+
+      &:hover {
+        @apply text-green-900;
+      }
     }
   }
 </style>

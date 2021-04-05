@@ -35,7 +35,7 @@ export default {
     },
 
     slug() {
-      return this.$route.params.slug;
+      return this.$route.params.pathMatch;
     }
   }
 };

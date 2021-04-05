@@ -6,8 +6,6 @@ pre[class*="language-"] {
   
   @apply text-sm;
   @apply rounded-lg;
-  
-  background-color: rgba(0, 0, 0, .06);
 }
 
 .prose {
@@ -18,6 +16,10 @@ pre[class*="language-"] {
     @apply px-2;
     @apply rounded-lg;
     @apply font-light;
+    @apply text-black;
+    @apply text-opacity-70;
+    @apply bg-black;
+    @apply bg-opacity-5;
   
     &::before,
     &::after {

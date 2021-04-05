@@ -43,7 +43,7 @@
 <script>
 import GitHubIcon from '~/components/icons/GitHub.vue';
 import SearchIcon from '~/components/icons/Search.vue';
-import Select from '~/components/Select.vue';
+import Select from '~/components/global/Select.vue';
 
 export default {
   name: 'Header',

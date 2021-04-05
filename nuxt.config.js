@@ -22,7 +22,7 @@ export default {
     extendRoutes(routes, resolve) {
       routes.push({ path: '/docs', redirect: '/docs/master/index' });
       routes.push({ path: '/docs/:version', redirect: to => `/docs/${to.params.version}/index` });
-      routes.push({ path: '/docs/:version/:slug', component: resolve(__dirname, 'pages/documentation.vue') });
+      routes.push({ path: '/docs/:version/*', component: resolve(__dirname, 'pages/documentation.vue') });
     }
   },
 
@@ -48,7 +48,9 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/content
-    '@nuxt/content'
+    '@nuxt/content',
+    // https://image.nuxtjs.org/
+    '@nuxt/image'
   ],
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
@@ -70,8 +72,12 @@ export default {
     }
   },
 
+  // TailwindCSS module: https://tailwindcss.nuxtjs.org/options
   tailwindcss: {
     jit: true,
     viewer: false
-  }
+  },
+
+  // Image module: https://image.nuxtjs.org/api/options
+  image: {}
 };
