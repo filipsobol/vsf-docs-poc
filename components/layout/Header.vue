@@ -26,22 +26,14 @@
         <Select
           :items="versions"
           selected="master"
+          @select="switchVersion($event)"
         />
-
-        <a
-          href="https://github.com/vuestorefront/vue-storefront/"
-          target="_blank"
-          rel="nofollow noreferrer noopener"
-        >
-          <GitHubIcon :size="20" />
-        </a>
       </div>
     </div>
   </header>
 </template>
 
 <script>
-import GitHubIcon from '~/components/icons/GitHub.vue';
 import SearchIcon from '~/components/icons/Search.vue';
 import Select from '~/components/global/Select.vue';
 
@@ -49,7 +41,6 @@ export default {
   name: 'Header',
 
   components: {
-    GitHubIcon,
     SearchIcon,
     Select
   },
@@ -59,9 +50,19 @@ export default {
       searchHotkey: '/',
       versions: [
         { label: 'master', value: 'master' },
-        { label: 'v2.3', value: 'v2.3' }
+        { label: 'v2.3', value: '2.3' }
       ]
     };
+  },
+
+  computed: {
+    version() {
+      return this.$route.params.version;
+    },
+
+    slug() {
+      return this.$route.params.pathMatch;
+    }
   },
 
   mounted() {
@@ -79,22 +80,32 @@ export default {
 
       this.$refs.searchInput.focus();
     });
+  },
+
+  methods: {
+    switchVersion(version) {
+      return this.$router.push({ path: `/docs/${version}` });
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
   .header {
-    @apply p-3;
+    @apply sticky;
+    @apply top-0;
+    @apply py-3;
+    @apply px-6;
     @apply border-b;
     @apply border-gray-100;
+    @apply bg-white;
+    @apply z-10;
   }
 
   .container {
     @apply w-full;
-    @apply max-w-7xl;
+    @apply max-w-[92rem];
     @apply mx-auto;
-    @apply px-6;
     @apply flex;
     @apply flex-row;
     @apply items-center;
@@ -108,10 +119,14 @@ export default {
     a {
       @apply hover:text-gray-900;
     }
+
+    @screen xl {
+      @apply px-6;
+    }
   }
 
   .logo {
-    @apply max-h-[36px];
+    @apply max-h-[32px];
   }
 
   .search {
@@ -123,12 +138,12 @@ export default {
     &-icon {
       @apply absolute;
       @apply left-3;
-      @apply top-[7px];
+      @apply top-2;
     }
 
     input {
       @apply w-full;
-      @apply h-full;
+      @apply h-10;
       @apply pl-12;
       @apply pr-24;
       @apply py-2;
@@ -142,8 +157,8 @@ export default {
   .hint {
     @apply hidden;
     @apply absolute;
-    @apply top-[6px];
-    @apply right-3;
+    @apply top-[5px];
+    @apply right-2;
     @apply pb-[2px];
     @apply px-2;
     @apply rounded;
@@ -152,7 +167,7 @@ export default {
     @apply border-gray-300;
     @apply select-none;
 
-    @screen md {
+    @screen lg {
       @apply block;
     }
   }

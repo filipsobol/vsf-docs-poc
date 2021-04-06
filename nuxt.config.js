@@ -20,8 +20,6 @@ export default {
 
   router: {
     extendRoutes(routes, resolve) {
-      routes.push({ path: '/docs', redirect: '/docs/master/index' });
-      routes.push({ path: '/docs/:version', redirect: to => `/docs/${to.params.version}/index` });
       routes.push({ path: '/docs/:version/*', component: resolve(__dirname, 'pages/documentation.vue') });
     }
   },

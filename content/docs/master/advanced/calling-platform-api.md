@@ -1,5 +1,7 @@
 ---
 title: Calling integration APIs
+category: Advanced
+position: 3
 ---
 
 ## How do integrations work?

@@ -1,11 +1,13 @@
 <template>
-  <div
-    v-if="doc"
-    class="prose"
-  >
-    <h1>{{ doc.title }}</h1>
+  <div>
+    <div
+      v-if="doc"
+      class="prose"
+    >
+      <h1>{{ doc.title }}</h1>
 
-    <nuxt-content :document="doc" />
+      <nuxt-content :document="doc" />
+    </div>
   </div>
 </template>
 
@@ -43,6 +45,6 @@ export default {
 
 <style lang="scss" scoped>
   .prose {
-    @apply max-w-none;
+    @apply max-w-5xl;
   }
 </style>

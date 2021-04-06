@@ -1,5 +1,7 @@
 ---
 title: Composables
+category: Guides
+position: 3
 ---
 
 > If you already have an experience with Vue Composition API, it's safe to skip this section and start with [Vue Storefront Composables](#what-are-vue-storefront-composables)

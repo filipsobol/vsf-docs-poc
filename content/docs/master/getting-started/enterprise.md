@@ -1,5 +1,7 @@
 ---
-title: What is Vue Storefront Enterprise
+title: Enterprise Edition
+category: Getting started
+position: 4
 ---
 
 > Vue Storefront Enterprise is currently available only for commercetools

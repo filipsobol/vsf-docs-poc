@@ -1,5 +1,7 @@
 ---
 title: Key concepts
+category: Getting started
+position: 3
 ---
 
 This document will walk you through the most important concepts of Vue Storefront, help you understand the ideas behind it and how to use them in the right way.

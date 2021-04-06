@@ -1,5 +1,7 @@
 ---
 title: Product Catalog
+category: Guides
+position: 4
 ---
 
 In Vue Storefront there are two composables available that you can use to interact with product catalog - `useProduct` and `useFacet`. The former should be used to work with a single product and its variants while the latter is for complex product listings with filtering and sorting.

@@ -1,5 +1,7 @@
 ---
 title: Authentication
+category: Guides
+position: 5
 ---
 
 Authentication is a process of recognizing the user's identity. It allows to associate incoming requests with an account or a person when provided credentials are compared with ones in the database.

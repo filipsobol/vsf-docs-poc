@@ -1,5 +1,7 @@
 ---
 title: Cart and Wishlist
+category: Guides
+position: 7
 ---
 
 Customer's cart and wishlist can be managed using `useCart` and `useWishlist` composables respectively, provided by every integration. Data can be accessed using `cartGetters` and `wishlistGetters`. 

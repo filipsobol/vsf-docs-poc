@@ -1,5 +1,7 @@
 ---
 title: Server middleware
+category: Advanced
+position: 4
 ---
 
 ## What is Vue Storefront Middleware and why we need it?

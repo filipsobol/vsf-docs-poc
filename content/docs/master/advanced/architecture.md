@@ -1,5 +1,7 @@
 ---
 title: Architecture
+category: Advanced
+position: 1
 ---
 
 <alert type="tip" title="Don't get scared!">

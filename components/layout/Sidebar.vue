@@ -21,13 +21,6 @@
         </li>
 
         <li class="header">
-          <NuxtLink to="/">
-            <span class="icon"><PullRequestIcon :size="20" /></span>
-            <span clsas="title">Migration Guide</span>
-          </NuxtLink>
-        </li>
-
-        <li class="header">
           <a
             href="https://www.notion.so/vuestorefront/Vue-Storefront-2-Next-High-level-Roadmap-201cf06abb314b84ad01b7b8463c0437"
             target="_blank"
@@ -38,131 +31,181 @@
           </a>
         </li>
 
-        <li class="parent">
-          <h5>Getting started</h5>
-
-          <ul class="nested">
-            <Li><NuxtLink to="/docs/master/getting-started/index">Introduction</NuxtLink></Li>
-            <Li><NuxtLink to="/docs/master/getting-started/installation">Installation</NuxtLink></Li>
-            <Li><NuxtLink to="/docs/master/getting-started/key-concepts">Key concepts</NuxtLink></Li>
-            <Li><NuxtLink to="/docs/master/getting-started/enterprise">Enterprise</NuxtLink></Li>
-          </ul>
+        <li class="header">
+          <a
+            href="https://www.notion.so/vuestorefront/Vue-Storefront-2-Next-High-level-Roadmap-201cf06abb314b84ad01b7b8463c0437"
+            target="_blank"
+            rel="nofollow noreferrer noopener"
+          >
+            <span class="icon"><GitHubIcon :size="20" /></span>
+            <span clsas="title">GitHub</span>
+          </a>
         </li>
 
-        <li class="parent">
-          <h5>Guides</h5>
-
-          <ul class="nested">
-            <li><NuxtLink to="/docs/master/guides/theme">Theme</NuxtLink></li>
-            <li><NuxtLink to="/docs/master/guides/configuration">Configuration</NuxtLink></li>
-            <li><NuxtLink to="/docs/master/guides/composables">Composables</NuxtLink></li>
-            <li><NuxtLink to="/docs/master/guides/product-catalog">Product Catalog</NuxtLink></li>
-            <li><NuxtLink to="/docs/master/guides/authentication">Authentication</NuxtLink></li>
-            <li><NuxtLink to="/docs/master/guides/user-profile">User profile</NuxtLink></li>
-            <li><NuxtLink to="/docs/master/guides/cart-and-wishlist">Cart and Wishlist</NuxtLink></li>
-            <li><NuxtLink to="/docs/master/guides/checkout">Checkout</NuxtLink></li>
-          </ul>
-        </li>
-
-        <li class="parent">
-          <h5>Advanced</h5>
-
-          <ul class="nested">
-            <li><NuxtLink to="/docs/master/advanced/architecture">Architecture</NuxtLink></li>
-            <li><NuxtLink to="/docs/master/advanced/context">Application Context</NuxtLink></li>
-            <li><NuxtLink to="/docs/master/advanced/calling-platform-api">Calling Platform API</NuxtLink></li>
-            <li><NuxtLink to="/docs/master/advanced/server-middleware">Server Middleware</NuxtLink></li>
-            <li><NuxtLink to="/docs/master/advanced/internationalization">Internationalization</NuxtLink></li>
-            <li><NuxtLink to="/docs/master/advanced/performance">Performance</NuxtLink></li>
-            <li><NuxtLink to="/docs/master/advanced/ssr-cache">SSR Cache</NuxtLink></li>
-            <li><NuxtLink to="/docs/master/advanced/logging">Logging</NuxtLink></li>
-          </ul>
-        </li>
+        <Category
+          v-for="category in categoryTree"
+          :key="category.name"
+          :name="category.name"
+          :elements="category.elements"
+        />
       </ul>
     </nav>
   </aside>
 </template>
 
 <script>
+import Category from '~/components/layout/Category.vue';
+import GitHubIcon from '~/components/icons/GitHub.vue';
 import MapIcon from '~/components/icons/Map.vue';
 import PackageIcon from '~/components/icons/Package.vue';
 import PlayIcon from '~/components/icons/Play.vue';
-import PullRequestIcon from '~/components/icons/PullRequest.vue';
 
 export default {
   name: 'Sidebar',
 
   components: {
+    Category,
+    GitHubIcon,
     MapIcon,
     PackageIcon,
-    PlayIcon,
-    PullRequestIcon
+    PlayIcon
+  },
+
+  data() {
+    return {
+      articles: null,
+      categories: null,
+      versions: [
+        { label: 'master', value: 'master' },
+        { label: 'v2.3', value: '2.3' }
+      ]
+    };
+  },
+
+  async fetch() {
+    await this.updateArticles();
+    await this.updateCategories();
+  },
+
+  computed: {
+    path() {
+      return `docs/${this.$route.params.version}`;
+    },
+
+    categoryTree() {
+      const categories = this.categories?.map(name => ({ name, elements: [] }));
+
+      return this.articles?.reduce((carry, article) => {
+        const categoryIndex = carry.findIndex(c => c.name === article.category);
+
+        if (categoryIndex >= 0) {
+          carry[categoryIndex].elements.push(article);
+        }
+
+        return carry;
+      }, categories);
+    }
+  },
+
+  watch: {
+    '$route.params.version'() {
+      this.updateCategories();
+    }
+  },
+
+  methods: {
+    async updateArticles() {
+      this.articles = await this
+        .$content(this.path, { deep: true })
+        .only(['category', 'position', 'path', 'title'])
+        .sortBy('position')
+        .fetch();
+    },
+
+    async updateCategories() {
+      const { categories } = await this.$content(`${this.path}/settings`).fetch();
+      this.categories = categories;
+    }
   }
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .sidebar {
-    @apply border-r;
-    @apply border-gray-100;
-  }
+    @apply h-full;
+    @apply bg-black;
+    @apply bg-opacity-50;
+    @apply z-40;
+    @apply inset-0;
+    @apply hidden;
 
-  nav {
-    @apply m-4;
-    @apply mt-8;
-  }
+    @screen lg {
+      @apply sticky;
+      @apply block;
+      @apply top-10;
+      @apply z-0;
+      @apply w-96;
+      @apply bg-transparent;
+      @apply h-auto;
+      @apply overflow-y-visible;
+      @apply border-r;
+      @apply border-gray-100;
+    }
 
-  .header {
-    & + & {
-      @apply mt-1;
+    nav {
+      @apply mt-8;
+      @apply mb-4;
+      @apply mx-2;
+    }
+
+    .header {
+      a {
+        @apply flex;
+        @apply items-center;
+
+        .icon {
+          @apply text-green-500;
+          @apply rounded-lg;
+
+          svg {
+            fill: theme('colors.blue.100');
+            stroke: theme('colors.blue.300');
+          }
+        }
+
+        & > * + * {
+          @apply ml-2;
+        }
+      }
+    }
+
+    h5 {
+      @apply mt-8;
+      @apply mb-2;
+      @apply px-4;
+      @apply text-xs;
+      @apply font-bold;
+      @apply uppercase;
     }
 
     a {
-      @apply flex;
-      @apply items-center;
-
-      .icon {
-        @apply text-green-500;
-        @apply rounded-lg;
-
-        svg {
-          fill: theme('colors.blue.100');
-          stroke: theme('colors.blue.300');
-        }
-      }
-
-      & > * + * {
-        @apply ml-2;
-      }
-    }
-  }
-
-  h5 {
-    @apply mt-8;
-    @apply mb-2;
-    @apply px-4;
-    @apply text-xs;
-    @apply font-bold;
-    @apply uppercase;
-  }
-
-  a {
-    @apply block;
-    @apply px-4;
-    @apply py-1;
-    @apply rounded;
-    @apply text-gray-500;
-
-    &:hover {
-      @apply text-gray-900;
-    }
-
-    &.nuxt-link-exact-active {
-      @apply bg-green-50;
-      @apply text-green-600;
+      @apply block;
+      @apply px-4;
+      @apply py-2;
+      @apply rounded;
+      @apply text-gray-500;
 
       &:hover {
-        @apply text-green-900;
+        @apply text-gray-900;
+      }
+
+      &.nuxt-link-exact-active {
+        @apply bg-green-50;
+        @apply text-green-600;
+
+        &:hover {
+          @apply text-green-900;
+        }
       }
     }
   }

@@ -1,5 +1,7 @@
 ---
 title: Logging
+category: Advanced
+position: 8
 ---
 
 In Vue Storefront we're providing all the debugging information, warnings, and errors from composables out of the box so you won't miss anything that happens inside your application. In this document, you will learn how to use our logger in your application and how to connect it with external services.

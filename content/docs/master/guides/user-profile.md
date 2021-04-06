@@ -1,5 +1,7 @@
 ---
 title: User profile
+category: Guides
+position: 6
 ---
 
 ## Loading current user

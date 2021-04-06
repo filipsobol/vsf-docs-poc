@@ -3,7 +3,7 @@
     <Header />
 
     <main class="content">
-      <Sidebar class="sidebar" />
+      <Sidebar />
       <Nuxt class="document" />
     </main>
 
@@ -33,42 +33,22 @@ export default {
   }
 
   .content {
+    @apply relative;
     @apply flex-grow;
     @apply flex;
     @apply flex-row;
     @apply w-full;
-    @apply max-w-7xl;
+    @apply max-w-[92rem];
     @apply mx-auto;
   }
 
-  .sidebar {
-    @apply fixed;
-    @apply h-full;
-    @apply bg-black;
-    @apply bg-opacity-50;
-    @apply w-96;
-    @apply z-40;
-    @apply inset-0;
-    @apply hidden;
-
-    @screen lg {
-      @apply bg-white;
-      @apply static;
-      @apply h-auto;
-      @apply overflow-y-visible;
-      @apply pt-0;
-      @apply block;
-    }
-  }
-
   .document {
-    @apply m-8;
+    @apply m-6;
     @apply min-w-0;
     @apply w-full;
 
     @screen lg {
-      @apply static;
-      @apply max-h-full;
+      @apply m-8;
       @apply overflow-visible;
     }
   }
