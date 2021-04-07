@@ -7,7 +7,7 @@
         v-for="element in elements"
         :key="element.path"
       >
-        <NuxtLink :to="element.path">{{ element.title }}</NuxtLink>
+        <NuxtLink :to="`/docs/${version}${element.path}`">{{ element.label }}</NuxtLink>
       </li>
     </ul>
   </li>
@@ -25,6 +25,12 @@ export default {
     elements: {
       type: Array,
       required: true
+    }
+  },
+
+  computed: {
+    version() {
+      return this.$route.params.version;
     }
   }
 };

@@ -1,9 +1,39 @@
 {
-  "version": "master",
-  "label": "master",
   "categories": [
-    "Getting started",
-    "Guides",
-    "Advanced"
+    {
+      "name": "Getting started",
+      "items": [
+        { "label": "Introduction", "path": "/getting-started/introduction" },
+        { "label": "Installation", "path": "/getting-started/installation" },
+        { "label": "Key concepts", "path": "/getting-started/key-concepts" },
+        { "label": "Enterprise Edition", "path": "/getting-started/enterprise" }
+      ]
+    },
+    {
+      "name": "Guides",
+      "items": [
+        { "label": "Theme", "path": "/guides/theme" },
+        { "label": "Configuration", "path": "/guides/configuration" },
+        { "label": "Composables", "path": "/guides/composables" },
+        { "label": "Product Catalog", "path": "/guides/product-catalog" },
+        { "label": "Authentication", "path": "/guides/authentication" },
+        { "label": "Cart and Wishlist", "path": "/guides/cart-and-wishlist" },
+        { "label": "User profile", "path": "/guides/user-profile" },
+        { "label": "Checkout", "path": "/guides/checkout" }
+      ]
+    },
+    {
+      "name": "Advanced",
+      "items": [
+        { "label": "Architecture", "path": "/advanced/architecture" },
+        { "label": "Context", "path": "/advanced/context" },
+        { "label": "Calling integration APIs", "path": "/advanced/calling-platform-api" },
+        { "label": "Server middleware", "path": "/advanced/server-middleware" },
+        { "label": "Internationalization", "path": "/advanced/internationalization" },
+        { "label": "Performance", "path": "/advanced/performance" },
+        { "label": "Server Side Rendering Cache", "path": "/advanced/ssr-cache" },
+        { "label": "Logging", "path": "/advanced/logging" }
+      ]
+    }
   ]
 }

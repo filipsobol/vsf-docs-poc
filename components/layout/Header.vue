@@ -21,48 +21,24 @@
 
         <div class="hint">Press {{ searchHotkey }}</div>
       </div>
-
-      <div class="side">
-        <Select
-          :items="versions"
-          selected="master"
-          @select="switchVersion($event)"
-        />
-      </div>
     </div>
   </header>
 </template>
 
 <script>
 import SearchIcon from '~/components/icons/Search.vue';
-import Select from '~/components/global/Select.vue';
 
 export default {
   name: 'Header',
 
   components: {
-    SearchIcon,
-    Select
+    SearchIcon
   },
 
   data() {
     return {
-      searchHotkey: '/',
-      versions: [
-        { label: 'master', value: 'master' },
-        { label: 'v2.3', value: '2.3' }
-      ]
+      searchHotkey: '/'
     };
-  },
-
-  computed: {
-    version() {
-      return this.$route.params.version;
-    },
-
-    slug() {
-      return this.$route.params.pathMatch;
-    }
   },
 
   mounted() {
@@ -80,12 +56,6 @@ export default {
 
       this.$refs.searchInput.focus();
     });
-  },
-
-  methods: {
-    switchVersion(version) {
-      return this.$router.push({ path: `/docs/${version}` });
-    }
   }
 };
 </script>

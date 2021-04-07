@@ -1,7 +1,5 @@
 ---
 title: Configuration
-category: Guides
-position: 2
 ---
 
 Usually, the first thing to do after setting up a fresh Vue Storefront project is configuring it. The bare minimum is to provide the API credentials for your integrations.

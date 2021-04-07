@@ -1,7 +1,5 @@
 ---
 title: Introduction
-category: Getting started
-position: 1
 ---
 
 ## What is Vue Storefront?

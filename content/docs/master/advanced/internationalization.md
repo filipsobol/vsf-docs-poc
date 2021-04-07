@@ -1,7 +1,5 @@
 ---
 title: Internationalization
-category: Advanced
-position: 5
 ---
 
 If you're building a shop for an international brand you want it to be translated to different languages and using different currencies. In this document, you will learn how we're approaching internationalization in Vue Storefront and how to configure your application to use it.

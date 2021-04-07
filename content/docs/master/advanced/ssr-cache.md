@@ -1,7 +1,5 @@
 ---
 title: Server Side Rendering Cache
-category: Advanced
-position: 7
 ---
 
 ## Introduction

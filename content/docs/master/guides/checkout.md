@@ -1,7 +1,5 @@
 ---
 title: Checkout
-category: Guides
-position: 8
 ---
 
 > This document only outlines the general checkout flow. Each eCommerce, Payment provider, and Shipping provider could implement it slightly differently. Please follow the instructions from the documentation of your payment or shipping provider to learn about its caveats

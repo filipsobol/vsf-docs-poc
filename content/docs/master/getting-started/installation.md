@@ -1,7 +1,5 @@
 ---
 title: Installation
-category: Getting started
-position: 2
 ---
 
 ## Using CLI

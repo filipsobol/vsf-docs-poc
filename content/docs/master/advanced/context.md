@@ -1,7 +1,5 @@
 ---
 title: Context API
-category: Advanced
-position: 2
 ---
 
 The application context is essential when it comes to sharing something across the app. A runtime config, current connection to the API, API tokens, user session, and everything else that's related to the current request should be stored within the context.

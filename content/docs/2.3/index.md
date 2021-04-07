@@ -1,7 +1,1 @@
----
-title: Index
----
-
-# 2.3
-
-Hello world
+Welcome to docs for `2.3` branch

@@ -1,0 +1,7 @@
+{
+  "versions": [
+    { "value": "master", "label": "master" },
+    { "value": "2.3", "label": "v2.3" }
+  ],
+  "defaultVersion": "2.3"
+}

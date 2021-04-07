@@ -73,7 +73,7 @@ export default {
 
     selected: {
       type: String,
-      default: () => this.items?.[0]?.value || ''
+      default: () => this.items?.[0]?.value || null
     }
   },
 
@@ -86,7 +86,7 @@ export default {
 
   computed: {
     selectedItem() {
-      return this.items.find(item => item.value === this.internalSelected);
+      return this.items.find(item => item.value === this.internalSelected) || this.items[0];
     }
   },
 

@@ -1,7 +1,5 @@
 ---
 title: Theme
-category: Guides
-position: 1
 ---
 
 ## Directory structure

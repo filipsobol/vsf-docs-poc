@@ -42,11 +42,23 @@
           </a>
         </li>
 
+        <li
+          v-if="versions"
+          class="parent">
+          <h5>Versions</h5>
+
+          <Select
+            :items="versions"
+            :selected="version"
+            @select="switchVersion($event)"
+          />
+        </li>
+
         <Category
-          v-for="category in categoryTree"
+          v-for="category in categories"
           :key="category.name"
           :name="category.name"
-          :elements="category.elements"
+          :elements="category.items"
         />
       </ul>
     </nav>
@@ -55,6 +67,7 @@
 
 <script>
 import Category from '~/components/layout/Category.vue';
+import Select from '~/components/global/Select.vue';
 import GitHubIcon from '~/components/icons/GitHub.vue';
 import MapIcon from '~/components/icons/Map.vue';
 import PackageIcon from '~/components/icons/Package.vue';
@@ -65,6 +78,7 @@ export default {
 
   components: {
     Category,
+    Select,
     GitHubIcon,
     MapIcon,
     PackageIcon,
@@ -73,58 +87,41 @@ export default {
 
   data() {
     return {
-      articles: null,
       categories: null,
-      versions: [
-        { label: 'master', value: 'master' },
-        { label: 'v2.3', value: '2.3' }
-      ]
+      versions: null
     };
   },
 
   async fetch() {
-    await this.updateArticles();
+    await this.updateVersions();
     await this.updateCategories();
   },
 
   computed: {
-    path() {
-      return `docs/${this.$route.params.version}`;
-    },
-
-    categoryTree() {
-      const categories = this.categories?.map(name => ({ name, elements: [] }));
-
-      return this.articles?.reduce((carry, article) => {
-        const categoryIndex = carry.findIndex(c => c.name === article.category);
-
-        if (categoryIndex >= 0) {
-          carry[categoryIndex].elements.push(article);
-        }
-
-        return carry;
-      }, categories);
+    version() {
+      return this.$route.params.version;
     }
   },
 
   watch: {
-    '$route.params.version'() {
+    version() {
       this.updateCategories();
     }
   },
 
   methods: {
-    async updateArticles() {
-      this.articles = await this
-        .$content(this.path, { deep: true })
-        .only(['category', 'position', 'path', 'title'])
-        .sortBy('position')
-        .fetch();
+    async updateVersions() {
+      const { versions } = await this.$content('docs/settings').only(['versions']).fetch();
+      this.versions = versions;
     },
 
     async updateCategories() {
-      const { categories } = await this.$content(`${this.path}/settings`).fetch();
+      const { categories } = await this.$content(`docs/${this.version}/settings`).fetch();
       this.categories = categories;
+    },
+
+    switchVersion(version) {
+      return this.$router.push({ path: `/docs/${version}` });
     }
   }
 };
