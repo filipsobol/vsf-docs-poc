@@ -20,9 +20,9 @@ export default {
 
   router: {
     extendRoutes(routes, resolve) {
-      routes.push({ path: '/docs', component: resolve(__dirname, 'pages/documentation.vue') });
-      routes.push({ path: '/docs/:version', component: resolve(__dirname, 'pages/documentation.vue') });
-      routes.push({ path: '/docs/:version/*', component: resolve(__dirname, 'pages/documentation.vue') });
+      routes.push({ path: '/docs', component: resolve(__dirname, 'pages/document.vue') });
+      routes.push({ path: '/docs/:version', component: resolve(__dirname, 'pages/document.vue') });
+      routes.push({ path: '/docs/:version/*', component: resolve(__dirname, 'pages/document.vue') });
     }
   },
 

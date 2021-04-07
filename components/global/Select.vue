@@ -3,7 +3,7 @@
     <div class="relative">
       <button
         type="button"
-        class="relative w-28 pl-3 pr-8 py-2 rounded text-left focus:outline-none focus:ring cursor-pointer"
+        class="relative w-full pl-3 pr-8 py-2 rounded text-left focus:outline-none focus:ring cursor-pointer"
         aria-haspopup="listbox"
         aria-expanded="true"
         aria-labelledby="listbox-label"
@@ -97,6 +97,7 @@ export default {
 
     select(value) {
       this.internalSelected = value;
+      this.isOpen = false;
 
       this.$emit('select', value);
     }

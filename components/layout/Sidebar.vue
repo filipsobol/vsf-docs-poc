@@ -31,25 +31,16 @@
           </a>
         </li>
 
-        <li class="header">
-          <a
-            href="https://www.notion.so/vuestorefront/Vue-Storefront-2-Next-High-level-Roadmap-201cf06abb314b84ad01b7b8463c0437"
-            target="_blank"
-            rel="nofollow noreferrer noopener"
-          >
-            <span class="icon"><GitHubIcon :size="20" /></span>
-            <span clsas="title">GitHub</span>
-          </a>
-        </li>
-
         <li
           v-if="versions"
-          class="parent">
-          <h5>Versions</h5>
+          class="parent"
+        >
+          <h5>Version</h5>
 
           <Select
             :items="versions"
             :selected="version"
+            class="mx-1"
             @select="switchVersion($event)"
           />
         </li>
@@ -68,7 +59,6 @@
 <script>
 import Category from '~/components/layout/Category.vue';
 import Select from '~/components/global/Select.vue';
-import GitHubIcon from '~/components/icons/GitHub.vue';
 import MapIcon from '~/components/icons/Map.vue';
 import PackageIcon from '~/components/icons/Package.vue';
 import PlayIcon from '~/components/icons/Play.vue';
@@ -79,7 +69,6 @@ export default {
   components: {
     Category,
     Select,
-    GitHubIcon,
     MapIcon,
     PackageIcon,
     PlayIcon

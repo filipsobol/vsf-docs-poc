@@ -1,11 +1,13 @@
 <template>
   <header class="header">
     <div class="container">
-      <img
-        src="https://camo.githubusercontent.com/48c886ac0703e3a46bc0ec963e20f126337229fc/68747470733a2f2f643968687267346d6e767a6f772e636c6f756466726f6e742e6e65742f7777772e76756573746f726566726f6e742e696f2f32383062313964302d6c6f676f2d76735f3062793032633062793032633030303030302e6a7067"
-        alt="Vue Storefront logo"
-        class="logo"
-      >
+      <NuxtLink to="/">
+        <img
+          src="https://camo.githubusercontent.com/48c886ac0703e3a46bc0ec963e20f126337229fc/68747470733a2f2f643968687267346d6e767a6f772e636c6f756466726f6e742e6e65742f7777772e76756573746f726566726f6e742e696f2f32383062313964302d6c6f676f2d76735f3062793032633062793032633030303030302e6a7067"
+          alt="Vue Storefront logo"
+          class="logo"
+        >
+      </NuxtLink>
 
       <div class="search">
         <SearchIcon
@@ -21,17 +23,26 @@
 
         <div class="hint">Press {{ searchHotkey }}</div>
       </div>
+
+      <div class="links">
+        <GitHubIcon :size="20" />
+        <DiscordIcon :size="28" />
+      </div>
     </div>
   </header>
 </template>
 
 <script>
+import DiscordIcon from '~/components/icons/Discord.vue';
+import GitHubIcon from '~/components/icons/GitHub.vue';
 import SearchIcon from '~/components/icons/Search.vue';
 
 export default {
   name: 'Header',
 
   components: {
+    DiscordIcon,
+    GitHubIcon,
     SearchIcon
   },
 
@@ -119,6 +130,8 @@ export default {
       @apply py-2;
       @apply bg-gray-100;
       @apply rounded;
+      @apply border;
+      @apply border-gray-200;
       @apply focus:outline-none;
       @apply focus:ring;
     }
@@ -142,12 +155,12 @@ export default {
     }
   }
 
-  .side {
+  .links {
     @apply flex;
     @apply items-center;
-    @apply justify-between;
+    @apply text-gray-500;
 
-    & > * + * {
+    * + * {
       @apply ml-4;
     }
   }

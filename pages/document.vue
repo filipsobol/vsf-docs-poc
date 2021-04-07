@@ -1,29 +1,22 @@
 <template>
-  <div class="content">
-    <Sidebar />
+  <div class="document">
+    <div
+      v-if="doc"
+      class="prose"
+    >
+      <h1 v-if="doc.title">{{ doc.title }}</h1>
 
-    <div class="document">
-      <div
-        v-if="doc"
-        class="prose"
-      >
-        <h1 v-if="doc.title">{{ doc.title }}</h1>
-
-        <nuxt-content :document="doc" />
-      </div>
+      <nuxt-content :document="doc" />
     </div>
   </div>
 </template>
 
 <script>
-import Sidebar from '~/components/layout/Sidebar.vue';
 
 export default {
   name: 'Documentation',
 
-  components: {
-    Sidebar
-  },
+  layout: 'documentation',
 
   async middleware({ $content, params, redirect }) {
     if (!params.version) {
@@ -65,16 +58,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.content {
-    @apply relative;
-    @apply flex-grow;
-    @apply flex;
-    @apply flex-row;
-    @apply w-full;
-    @apply max-w-[92rem];
-    @apply mx-auto;
-  }
-
   .document {
     @apply m-6;
     @apply min-w-0;
