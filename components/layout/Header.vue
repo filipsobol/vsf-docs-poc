@@ -53,7 +53,15 @@ export default {
   },
 
   mounted() {
-    window.addEventListener('keypress', (event) => {
+    window.addEventListener('keypress', this.onKeyPress);
+  },
+
+  beforeDestroy() {
+    window.removeEventListener('keyup', this.onKeyPress);
+  },
+
+  methods: {
+    onKeyPress(event) {
       if (event.key !== this.searchHotkey) {
         return;
       }
@@ -66,7 +74,7 @@ export default {
       event.stopPropagation();
 
       this.$refs.searchInput.focus();
-    });
+    }
   }
 };
 </script>

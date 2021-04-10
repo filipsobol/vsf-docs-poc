@@ -19,11 +19,15 @@ import Header from '~/components/layout/Header.vue';
 import Sidebar from '~/components/layout/Sidebar.vue';
 
 export default {
+  name: 'DocumentationLayout',
+
   components: {
     Footer,
     Header,
     Sidebar
-  }
+  },
+
+  middleware: 'docs'
 };
 </script>
 

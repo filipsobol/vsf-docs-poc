@@ -4,7 +4,14 @@
       v-if="doc"
       class="prose"
     >
-      <h1 v-if="doc.title">{{ doc.title }}</h1>
+      <p class="update-time">Last updated {{ relativeTime }} ago</p>
+
+      <h1
+        v-if="doc.title"
+        class="title"
+      >
+        {{ doc.title }}
+      </h1>
 
       <nuxt-content :document="doc" />
     </div>
@@ -12,32 +19,13 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import dayjs from 'dayjs';
 
 export default {
   name: 'Documentation',
 
   layout: 'documentation',
-
-  async middleware({ $content, params, redirect }) {
-    if (!params.version) {
-      const { defaultVersion } = await $content('docs/settings').only(['defaultVersion']).fetch();
-      redirect(`/docs/${defaultVersion}/index`);
-    }
-
-    if (!params.pathMatch) {
-      return redirect(`/docs/${params.version}/index`);
-    }
-  },
-
-  data() {
-    return {
-      doc: null
-    };
-  },
-
-  async fetch() {
-    this.doc = await this.$content(`docs/${this.version}/${this.slug}`).fetch();
-  },
 
   head() {
     return {
@@ -46,12 +34,16 @@ export default {
   },
 
   computed: {
-    version() {
-      return this.$route.params.version;
-    },
+    ...mapState({
+      doc: state => state.document.doc
+    }),
 
     slug() {
       return this.$route.params.pathMatch;
+    },
+
+    relativeTime() {
+      return dayjs().from(dayjs(this.doc.updatedAt), true);
     }
   }
 };
@@ -71,5 +63,11 @@ export default {
 
   .prose {
     @apply max-w-5xl;
+  }
+
+  .update-time {
+    @apply text-right;
+    @apply mb-2;
+    @apply text-gray-400;
   }
 </style>

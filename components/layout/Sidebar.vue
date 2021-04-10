@@ -74,41 +74,19 @@ export default {
     PlayIcon
   },
 
-  data() {
-    return {
-      categories: null,
-      versions: null
-    };
-  },
-
-  async fetch() {
-    await this.updateVersions();
-    await this.updateCategories();
-  },
-
   computed: {
     version() {
       return this.$route.params.version;
-    }
-  },
-
-  watch: {
-    version() {
-      this.updateCategories();
+    },
+    versions() {
+      return this.$store.state.settings.settings.versions;
+    },
+    categories() {
+      return this.$store.state.versions.versions[this.version].categories;
     }
   },
 
   methods: {
-    async updateVersions() {
-      const { versions } = await this.$content('docs/settings').only(['versions']).fetch();
-      this.versions = versions;
-    },
-
-    async updateCategories() {
-      const { categories } = await this.$content(`docs/${this.version}/settings`).fetch();
-      this.categories = categories;
-    },
-
     switchVersion(version) {
       return this.$router.push({ path: `/docs/${version}` });
     }
