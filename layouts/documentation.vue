@@ -6,6 +6,7 @@
       <div class="content">
         <Sidebar />
         <Nuxt />
+        <TableOfContent />
       </div>
     </div>
 
@@ -17,6 +18,7 @@
 import Footer from '~/components/layout/Footer.vue';
 import Header from '~/components/layout/Header.vue';
 import Sidebar from '~/components/layout/Sidebar.vue';
+import TableOfContent from '~/components/layout/TableOfContent.vue';
 
 export default {
   name: 'DocumentationLayout',
@@ -24,7 +26,8 @@ export default {
   components: {
     Footer,
     Header,
-    Sidebar
+    Sidebar,
+    TableOfContent
   },
 
   middleware: 'docs'
@@ -48,7 +51,7 @@ export default {
     @apply flex;
     @apply flex-row;
     @apply w-full;
-    @apply max-w-[92rem];
+    @apply max-w-[90rem];
     @apply mx-auto;
   }
 </style>

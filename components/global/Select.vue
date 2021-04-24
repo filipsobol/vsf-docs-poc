@@ -3,7 +3,7 @@
     <div class="relative">
       <button
         type="button"
-        class="relative w-full pl-3 pr-8 py-2 rounded text-left focus:outline-none focus:ring cursor-pointer"
+        class="relative w-full pl-3 pr-8 py-2 rounded text-left focus:outline-none focus:ring cursor-pointer border bg-gray-50"
         aria-haspopup="listbox"
         aria-expanded="true"
         aria-labelledby="listbox-label"

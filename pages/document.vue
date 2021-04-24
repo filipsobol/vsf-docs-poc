@@ -4,8 +4,6 @@
       v-if="doc"
       class="prose"
     >
-      <p class="update-time">Last updated {{ relativeTime }} ago</p>
-
       <h1
         v-if="doc.title"
         class="title"
@@ -20,7 +18,6 @@
 
 <script>
 import { mapState } from 'vuex';
-import dayjs from 'dayjs';
 
 export default {
   name: 'Documentation',
@@ -40,34 +37,24 @@ export default {
 
     slug() {
       return this.$route.params.pathMatch;
-    },
-
-    relativeTime() {
-      return dayjs().from(dayjs(this.doc.updatedAt), true);
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-  .document {
-    @apply m-6;
-    @apply min-w-0;
-    @apply w-full;
+.document {
+  @apply m-6;
+  @apply min-w-0;
+  @apply w-full;
 
-    @screen lg {
-      @apply m-8;
-      @apply overflow-visible;
-    }
+  @screen lg {
+    @apply m-8;
+    @apply overflow-visible;
   }
+}
 
-  .prose {
-    @apply max-w-5xl;
-  }
-
-  .update-time {
-    @apply text-right;
-    @apply mb-2;
-    @apply text-gray-400;
-  }
+.prose {
+  @apply max-w-none;
+}
 </style>

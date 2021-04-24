@@ -1,17 +1,20 @@
 .prose {
+  @apply text-lg;
+
   h1 {
+    @apply mb-6;
     @apply text-4xl;
     @apply font-bold;
   }
 
   h2 {
-    @apply mt-12;
+    @apply mt-6;
     @apply mb-4;
     @apply pb-2;
     @apply border-b;
     @apply border-gray-200;
     @apply text-2xl;
-    @apply font-semibold;
+    @apply font-bold;
   }
 
   p {
@@ -19,6 +22,24 @@
   }
 
   strong {
-    @apply font-medium;
+    @apply font-semibold;
+  }
+
+  a {
+    @apply text-green-500;
+    @apply no-underline;
+
+    &:hover {
+      @apply text-green-700;
+      @apply underline;
+    }
+  }
+
+  li {
+    @apply my-1;
+
+    ul {
+      @apply my-0;
+    }
   }
 }

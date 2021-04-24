@@ -54,7 +54,7 @@ export default {
 
   .title {
     @apply mb-2;
-    @apply font-semibold;
+    @apply font-bold;
   }
 
   &-tip,

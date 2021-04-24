@@ -40,7 +40,7 @@
           <Select
             :items="versions"
             :selected="version"
-            class="mx-1"
+            class="version-switcher"
             @select="switchVersion($event)"
           />
         </li>
@@ -108,12 +108,10 @@ export default {
       @apply block;
       @apply top-10;
       @apply z-0;
-      @apply w-96;
+      @apply w-[30rem];
       @apply bg-transparent;
       @apply h-auto;
       @apply overflow-y-visible;
-      @apply border-r;
-      @apply border-gray-100;
     }
 
     nav {
@@ -126,6 +124,8 @@ export default {
       a {
         @apply flex;
         @apply items-center;
+        @apply px-0;
+        @apply border-0;
 
         .icon {
           @apply text-green-500;
@@ -146,17 +146,19 @@ export default {
     h5 {
       @apply mt-8;
       @apply mb-2;
-      @apply px-4;
-      @apply text-xs;
       @apply font-bold;
-      @apply uppercase;
+    }
+
+    .version-switcher {
+      @apply mx-1;
     }
 
     a {
       @apply block;
       @apply px-4;
-      @apply py-2;
-      @apply rounded;
+      @apply py-1;
+      @apply border-l-2;
+      @apply border-gray-100;
       @apply text-gray-500;
 
       &:hover {
@@ -164,11 +166,11 @@ export default {
       }
 
       &.nuxt-link-exact-active {
-        @apply bg-green-50;
-        @apply text-green-600;
+        @apply border-green-400;
+        @apply text-green-500;
 
         &:hover {
-          @apply text-green-900;
+          @apply text-green-700;
         }
       }
     }

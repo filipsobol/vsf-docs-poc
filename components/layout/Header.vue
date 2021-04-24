@@ -81,8 +81,6 @@ export default {
 
 <style lang="scss" scoped>
   .header {
-    @apply sticky;
-    @apply top-0;
     @apply py-3;
     @apply px-6;
     @apply border-b;
